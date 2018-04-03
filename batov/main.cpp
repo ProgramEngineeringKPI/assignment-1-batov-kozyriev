@@ -68,6 +68,6 @@ int main() {
   fclose(file);
   ofstream fout("result.csv"); // writing data to output file
   for (int i = 0; i < TOP_NUMBER; i++) {
-    fout << all_countries[i] << " " << rating_points[i] << endl;
+    fout << all_countries[i] << "," << rating_points[i] << endl;
   }
 }
