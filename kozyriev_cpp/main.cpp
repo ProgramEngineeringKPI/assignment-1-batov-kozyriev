@@ -21,8 +21,7 @@ void sortAndRate(int arr[][2], int n, int res[]){
 
 int main() {
   FILE* fin = fopen("eurovision.csv", "r");
-  ofstream fout;
-  fout.open("results.csv");
+  FILE* fout = fopen("results.csv", "w");
 
   int result[10] = {};
   char *numbers = new char;
@@ -74,10 +73,10 @@ int main() {
   }
 
   for (int i = 0; i < n; i++) {
-    fout << all_countries[i] << ',' << results[i]<< endl;
+    fprintf(fout, "%s%c%d\n", all_countries[i].c_str(),',',results[i]);
   }
 
 
   fclose(fin);
-  fout.close();
+  fclose(fout);
 }
