@@ -33,7 +33,7 @@ int main() {
   int n = atoi(numbers); // number of countries
   char data[n][200];
   for (int i = 0; i < n; i++) fgets(data[i], sizeof(data[i]), file);
-  vector<string> all_countries;
+  string all_countries[n];
   string countries[n][n];
   int points[n][n], transposed[n][n], index_array[n][n];
   int rating_points[n] = {};
@@ -42,7 +42,7 @@ int main() {
     int counter = 0;
     while (pointer != nullptr) {
       if (counter == 0) { // push first element to array of countries
-        all_countries.push_back(pointer);
+        all_countries[i] = pointer;
         pointer = strtok(nullptr, ",");
         counter++;
         continue;
@@ -66,8 +66,9 @@ int main() {
   }
   make_top(rating_points, &all_countries[0], n);
   fclose(file);
-  ofstream fout("result.csv"); // writing data to output file
+  FILE *output_file = fopen("result.csv", "w");// writing data to output file
   for (int i = 0; i < TOP_NUMBER; i++) {
-    fout << all_countries[i] << "," << rating_points[i] << endl;
+    fprintf(output_file, "%s,%d\n", all_countries[i].c_str(), rating_points[i]);
   }
+  fclose(output_file);
 }
