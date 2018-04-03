@@ -72,7 +72,7 @@ int main() {
     }
   }
 
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < 10; i++) {
     fprintf(fout, "%s%c%d\n", all_countries[i].c_str(),',',results[i]);
   }
 

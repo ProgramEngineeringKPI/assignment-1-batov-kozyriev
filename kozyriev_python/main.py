@@ -18,7 +18,7 @@ def rate(col):
 def output():
     countries.sort(key=lambda x: x[1])
     countries.reverse()
-    for i in range(int(count)):
+    for i in range(10):
         fout.write(str(countries[i][0]) + ',' + str(countries[i][1]) + '\n')
 
 #creating arrays of countries and matrix
