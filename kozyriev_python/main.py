@@ -1,5 +1,3 @@
-import operator
-
 fin = open("eurovision.csv", "r") #input file
 fout = open("results.csv", "w") #output file
 
@@ -35,6 +33,7 @@ for j in range(int(count)):
         column.append([buff, i])
     rate(column)
     column = []
+    
 output()
 fin.close()
 fout.close()
