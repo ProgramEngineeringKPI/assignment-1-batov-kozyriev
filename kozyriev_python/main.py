@@ -6,6 +6,7 @@ countries = []
 matrix = []
 column = []
 
+#rate function
 def rate(col):
     col.sort(reverse = True)
     countries[col[0][1]][1] = countries[col[0][1]][1] + 12
@@ -13,6 +14,7 @@ def rate(col):
     for i in range(2,10):
         countries[col[i][1]][1] = countries[col[i][1]][1] + (10 - i)
 
+#output results to file
 def output():
     countries.sort(key=lambda x: x[1])
     countries.reverse()
@@ -27,13 +29,14 @@ for line in range(int(count)):
     del(buff[0])
     matrix.append(buff)
 
+#going by columns and adding points
 for j in range(int(count)):
     for i in range(int(count)):
         buff = int(matrix[i][j])
         column.append([buff, i])
     rate(column)
     column = []
-    
+
 output()
 fin.close()
 fout.close()
