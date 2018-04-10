@@ -34,7 +34,6 @@ int main() {
   char data[n][200];
   for (int i = 0; i < n; i++) fgets(data[i], sizeof(data[i]), file);
   string all_countries[n];
-  string countries[n][n];
   int points[n][n], transposed[n][n], index_array[n][n];
   int rating_points[n] = {};
   for (int i = 0; i < n; i++) {
