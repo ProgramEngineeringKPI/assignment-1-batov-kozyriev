@@ -28,11 +28,25 @@ void make_top(int *rating_points, string *countries, int n) {
 
 int main() {
   FILE *file = fopen("./text/eurovision.csv", "r");
-  char *numbers = new char;
-  fgets(numbers, sizeof(numbers), file);
-  int n = atoi(numbers); // number of countries
-  char data[n][200];
-  for (int i = 0; i < n; i++) fgets(data[i], sizeof(data[i]), file);
+  int n = 0;
+  int size = 10;
+  int count = 0;
+  char **data = new char*[10];
+  while (!feof(file)) {
+    if ((count % 10) == 0) {
+      char **extend_arr = new char*[size + 10];
+      for (int i = 0; i < size; i++) extend_arr[i] = data[i];
+      data = extend_arr;
+      size += 10;
+      count++;
+      continue;
+    }
+    data[n] = new char[200];
+    fgets(data[n], 200, file);
+    n++;
+    count++;
+  }
+  n--; // must dont count last iteration
   string all_countries[n];
   int points[n][n], transposed[n][n], index_array[n][n];
   int rating_points[n] = {};
